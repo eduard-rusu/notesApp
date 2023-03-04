@@ -10,7 +10,7 @@ notesRouter.get('/', async (req, res) => {
 
 notesRouter.get('/:id', async (req, res) => {
   const note = await Note.findById(req.params.id)
-  if (!note) return res.status(404).send({ error: 'Note not found' })
+  if (note === null) return res.status(404).send({ error: 'Note not found' })
   res.send(note)
 })
 

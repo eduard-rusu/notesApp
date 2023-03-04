@@ -12,7 +12,7 @@ const initialNotes = [
 ]
 
 const nonExistingId = async () => {
-  const note = new Note({ content: 'temp' })
+  const note = new Note({ content: 'temporary' })
   await note.save()
   await note.remove()
   return note._id.toString()

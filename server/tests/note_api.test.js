@@ -1,10 +1,13 @@
-const mongoose = require('mongoose')
 const app = require('../app')
 const supertest = require('supertest')
 const api = supertest(app)
-const helper = require('./test_helper')
+const helper = require('./note_helper')
 const Note = require('../models/note')
 
+
+beforeAll(async () => {
+  await app.connectToDb()
+})
 
 beforeEach(async () => {
   await Note.deleteMany({})
@@ -101,8 +104,6 @@ describe('addition of a new note', () => {
 })
 
 
-
-
 describe('deletion of a note', () => {
   test('succeeds with status code 204 if id is valid', async () => {
     const notesAtStart = await helper.notesInDb()
@@ -120,7 +121,6 @@ describe('deletion of a note', () => {
   })
 })
 
-
 afterAll(async () => {
-  await mongoose.connection.close()
+  app.disconnectFromDb()
 })

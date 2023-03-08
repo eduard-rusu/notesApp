@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AddNote from "./components/AddNote";
 import Notes from "./components/Notes";
 import Notification from "./components/Notification";
@@ -13,6 +13,7 @@ const App = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
+  const noteFormRef = useRef()
 
   const handleOnLogin = async (e) => {
     e.preventDefault();
@@ -35,18 +36,18 @@ const App = () => {
     }
   }
 
-
   const handleUsernameChange = ({ target }) => { setUsername(target.value)}
-
 
   const handlePasswordChange = ({ target }) => { setPassword(target.value)}
 
 
   const handleOnAddNote = (note) => {
+    console.log(noteFormRef)
+    noteFormRef.current.toggleVisibility()
     notesService.addNote(note)
       .then(data => {
         setNotes(notes.concat(data))
-        setMessage("Added new note") 
+        setMessage("Added new note")
       })
       .catch(err => setMessage(err.error));
     
@@ -103,7 +104,9 @@ const App = () => {
   }
 
   const noteForm = () => (
+    <Togglable buttonLabel="create note" ref={noteFormRef}>
       <AddNote handleOnAddNote={handleOnAddNote}/>
+    </Togglable>
   )
 
   return (

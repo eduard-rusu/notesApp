@@ -1,10 +1,9 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import notesService from "../services/notesService"
 
 const AddNote = ({ handleOnAddNote }) => {
   const [content, setContent] = useState('')
   const [important, setImportant] = useState(false)
-
 
   const handleOnSubmit = (e) => {
       e.preventDefault()
@@ -13,7 +12,8 @@ const AddNote = ({ handleOnAddNote }) => {
           important: important
       }
       handleOnAddNote(note)
-      setContent('');
+      setContent('')
+      setImportant(false)
   }
 
 
@@ -40,6 +40,7 @@ const AddNote = ({ handleOnAddNote }) => {
         <input 
           onChange={handleOnImportantChange} 
           type="checkbox"
+          checked={important}
         />
         <button type="submit">Add</button>
       </form>

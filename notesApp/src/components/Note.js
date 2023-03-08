@@ -1,4 +1,4 @@
-import NotesService from "../services/NotesService"
+import NotesService from "../services/notesService"
 
 const Note = ({note, handleOnRemoveNote, handleOnModifyNote}) => {
     const handleOnDelete = () => {

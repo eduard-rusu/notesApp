@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types'
 
 const Login = ({
   handleOnLogin,
@@ -36,6 +36,6 @@ Login.propTypes = {
   handlePasswordChange: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired
-} 
+}
 
 export default Login

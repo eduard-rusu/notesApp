@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import AddNote from "./components/AddNote";
-import Notes from "./components/Notes";
-import Notification from "./components/Notification";
-import Login from "./components/LoginForm";
-import notesService from "./services/notesService";
-import loginService from "./services/loginService"
-import Togglable from "./components/Togglable";
+import React, { useEffect, useRef, useState } from 'react'
+import AddNote from './components/AddNote'
+import Notes from './components/Notes'
+import Notification from './components/Notification'
+import Login from './components/LoginForm'
+import notesService from './services/notesService'
+import loginService from './services/loginService'
+import Togglable from './components/Togglable'
 
 const App = () => {
   const [notes, setNotes] = useState([])
@@ -16,9 +16,9 @@ const App = () => {
   const noteFormRef = useRef()
 
   const handleOnLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     console.log('logging in with', username, password)
-    
+
     try {
       const user = await loginService.login({
         username, password
@@ -47,17 +47,17 @@ const App = () => {
     notesService.addNote(note)
       .then(data => {
         setNotes(notes.concat(data))
-        setMessage("Added new note")
+        setMessage('Added new note')
       })
-      .catch(err => setMessage(err.error));
-    
+      .catch(err => setMessage(err.error))
+
   }
 
 
   const handleOnRemoveNote = (note) => {
     notesService.removeNote(note)
     setNotes(notes.filter(n => n.id !== note.id))
-    setMessage(`Removed note`)
+    setMessage('Removed note')
   }
 
 
@@ -72,19 +72,19 @@ const App = () => {
       setNotes(data)
     })
     const user = JSON.parse(window.localStorage.getItem('loggedNoteappUser'))
-    
+
     if (user)
       notesService.setToken(user.token)
-      setUser(user)
+    setUser(user)
   }, [])
 
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-        setMessage(null)
+      setMessage(null)
     }, 4000)
     return () => {
-        clearTimeout(timeout)
+      clearTimeout(timeout)
     }
   }, [message])
 
@@ -92,7 +92,7 @@ const App = () => {
   const loginForm = () => {
     return (
       <Togglable buttonLabel="reveal">
-        <Login 
+        <Login
           handleOnLogin={handleOnLogin}
           handleUsernameChange={handleUsernameChange}
           handlePasswordChange={handlePasswordChange}
@@ -122,4 +122,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default App

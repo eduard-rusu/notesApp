@@ -1,5 +1,5 @@
 const myFetch = async (uri, req) => {
-    return await fetch(uri, req);
+  return await fetch(uri, req)
 }
 
 

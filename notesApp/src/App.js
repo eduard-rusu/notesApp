@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import AddNote from './components/AddNote'
+import NoteForm from './components/NoteForm'
 import Notes from './components/Notes'
 import Notification from './components/Notification'
 import Login from './components/LoginForm'
@@ -105,7 +105,7 @@ const App = () => {
 
   const noteForm = () => (
     <Togglable buttonLabel="create note" ref={noteFormRef}>
-      <AddNote handleOnAddNote={handleOnAddNote}/>
+      <NoteForm handleOnAddNote={handleOnAddNote}/>
     </Togglable>
   )
 

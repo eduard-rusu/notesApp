@@ -8,9 +8,9 @@ describe('<NoteForm />', () => {
     const createNote = jest.fn()
     const user = userEvent.setup()
 
-    render(<NoteFrom handleOnAddNote={createNote}/>)
-    
-    const input = screen.getByRole('textbox')
+    const { container } = render(<NoteFrom handleOnAddNote={createNote}/>)
+
+    const input = container.querySelector('#note-input')
     const sendButton = screen.getByText('Add')
 
     await user.type(input, 'testing a form')

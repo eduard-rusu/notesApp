@@ -42,7 +42,6 @@ const App = () => {
 
 
   const handleOnAddNote = (note) => {
-    console.log(noteFormRef)
     noteFormRef.current.toggleVisibility()
     notesService.addNote(note)
       .then(data => {

@@ -32,16 +32,17 @@ const NoteForm = ({ handleOnAddNote }) => {
       <form onSubmit={handleOnSubmit}>
         <input
           onChange={handleOnContentChange}
-          type="text"
+          type='text'
           value={content}
+          id='note-input'
         />
         is Important?
         <input
           onChange={handleOnImportantChange}
-          type="checkbox"
+          type='checkbox'
           checked={important}
         />
-        <button type="submit">Add</button>
+        <button type='submit'>Add</button>
       </form>
     </div>
   )

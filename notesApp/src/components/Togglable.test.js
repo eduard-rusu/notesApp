@@ -46,4 +46,17 @@ describe('<Togglable />', () => {
     const div = container.querySelector('.togglableContent')
     expect(div).toHaveStyle('display: none')
   })
+
+  test('ref is correct', () => {
+    const ref = React.createRef()
+    render(
+      <Togglable buttonLabel='show...' ref={ref}>
+        <div className='testDiv'>
+          togglable content
+        </div>
+      </Togglable>
+    )
+    expect(ref.current).toBeDefined()
+    expect(ref.current.toggleVisibility).toBeDefined()
+  })
 })

@@ -17,13 +17,12 @@ const App = () => {
 
   const handleOnLogin = async (e) => {
     e.preventDefault()
-    console.log('logging in with', username, password)
 
     try {
       const user = await loginService.login({
         username, password
       })
-
+      setMessage(`logged in as ${username}`)
       window.localStorage.setItem(
         'loggedNoteappUser', JSON.stringify(user)
       )
@@ -90,7 +89,7 @@ const App = () => {
 
   const loginForm = () => {
     return (
-      <Togglable buttonLabel="reveal">
+      <Togglable buttonLabel="log in">
         <Login
           handleOnLogin={handleOnLogin}
           handleUsernameChange={handleUsernameChange}

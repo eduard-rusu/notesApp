@@ -41,8 +41,9 @@ const NoteForm = ({ handleOnAddNote }) => {
           onChange={handleOnImportantChange}
           type='checkbox'
           checked={important}
+          id='note-important'
         />
-        <button type='submit'>Add</button>
+        <button id='create-note' type='submit'>Add</button>
       </form>
     </div>
   )

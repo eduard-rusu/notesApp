@@ -14,7 +14,7 @@ const Note = ({ note, handleOnRemoveNote, handleOnModifyNote }) => {
 
   return (
     <li className='note'>
-      <div>{note.content}</div>
+      <span>{note.content}</span>
       <button onClick={handleOnDelete} type="text">Delete</button>
       <button onClick={handleOnModify} type="text">{important}</button>
     </li>
